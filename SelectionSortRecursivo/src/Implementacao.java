@@ -1,36 +1,37 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Implementacao {
+class Implementacao {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String entrada = sc.nextLine();
-
         String[] arrayStr = entrada.split(" ");
-        int[] arrayInt = new int[arrayStr.length];
+        int[] inteiros = new int[arrayStr.length];
 
         for (int i = 0; i < arrayStr.length; i++) {
-            arrayInt[i] = Integer.parseInt(arrayStr[i]);
+            inteiros[i] = Integer.parseInt(arrayStr[i]);
         } // transforma array de str em array de int
 
-        selectionSort(arrayInt);
+        selectionSort(inteiros,0);
     }
 
-    private static void selectionSort(int[] arrayInt) {
-        for (int i = 0; i < arrayInt.length; i++) {
-            int indexMenor = i;
-            for (int j = i + 1; j < arrayInt.length; j++) {
-                if (arrayInt[j] < arrayInt[indexMenor]) {
-                    indexMenor = j;
-                }
-            }
-            int aux = arrayInt[i];
-            arrayInt[i] = arrayInt[indexMenor];
-            arrayInt[indexMenor] = aux;
+    private static void selectionSort(int[] v, int inicio) {
+        if (inicio>=v.length){
+            return;}
 
-            if (i < arrayInt.length - 1) {
-                System.out.println(Arrays.toString(arrayInt));
+        int indexMenor = inicio;
+
+        for(int j = indexMenor+1 ; j<v.length; j++){
+            if (v[j] < v[indexMenor]){
+                indexMenor = j;
             }
         }
+        int aux = v[inicio];
+        v[inicio] = v[indexMenor];
+        v[indexMenor] = aux;
+        if(inicio<v.length-1) {
+            System.out.println(Arrays.toString(v));
+        }
+        selectionSort(v, inicio+1);
     }
 }
