@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class VerificaDuplicados{
+class VerificaDuplicados{
     public static void main (String [] args) {
         Scanner sc = new Scanner(System.in);
         String entrada = sc.nextLine();
@@ -9,7 +9,7 @@ public class VerificaDuplicados{
     }
     private static boolean verificador(String[] v){
         for (int i = 0; i<v.length; i++){
-            for(int j=+1; j<v.length; j++){
+            for(int j=i+1; j<v.length; j++){
                 if (v[i].equals(v[j])){
                     return true;
                 }
